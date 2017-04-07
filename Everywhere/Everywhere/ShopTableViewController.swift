@@ -13,14 +13,6 @@ class ShopTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 128, height: 42))
-        imageView.contentMode = .scaleAspectFit
-        
-        let image = UIImage(named: "logoBlack")
-        imageView.image = image
-        
-        navigationItem.titleView = imageView
-        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

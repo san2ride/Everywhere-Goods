@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import Buy
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    // Configured store credentials
+    let shopDomain: String = ""
+    let apiKey:     String = ""
+    let appID:      String = ""
+    
+    private(set) var client: BUYClient!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -20,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootViewController = window!.rootViewController as! UINavigationController
         let productsViewController = rootViewController.topViewController as! ProductViewController
         productsViewController.products = ProductAPI()
+        
+        self.client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
         
         return true
     }

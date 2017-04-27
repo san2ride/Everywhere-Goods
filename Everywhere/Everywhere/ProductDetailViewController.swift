@@ -48,6 +48,8 @@ class ProductDetailViewController: UIViewController {
     
     @IBAction func addToCartPressed(_ sender: UIButton) {
         
+        self.performSegue(withIdentifier: "CartSegue", sender: nil)
+        
     }
     
     

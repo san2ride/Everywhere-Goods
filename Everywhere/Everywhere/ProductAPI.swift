@@ -44,7 +44,7 @@ class ProductAPI {
             
             guard error == nil else {
                 print("error getting products from shopifyAPI")
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
                 return
             }
             

@@ -166,7 +166,7 @@ extension UIImageView {
     public func imageFromServer(urlString: String) {
         URLSession.shared.dataTask(with: URL(string: urlString)!) { (data, response, error) in
             if error != nil {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
                 return
             }
             DispatchQueue.main.async(execute: { () -> Void in
@@ -209,7 +209,7 @@ extension ProductViewController: CLLocationManagerDelegate {
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error) -> Void in
             
             if (error != nil) {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
             }
             
             if (placemarks?.count)! > 0 {

@@ -21,6 +21,8 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     var productData = [Product]()
     var filteredProducts = [Product]()
     var userZipcode: String = ""
+    var currentProduct: Product?
+    
         
         
     override func viewDidLoad() {
@@ -60,10 +62,7 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         
     }
     
-    @IBAction func tabBarButtonPressed(_ sender: UIBarButtonItem) {
-        
-        self.performSegue(withIdentifier: "TabBarSegue", sender: nil)
-    }
+    
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -117,9 +116,12 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
             UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseIn], animations: {
                 cell.imageView?.transform = CGAffineTransform.identity
             }, completion: { [weak self] finished in
-                self?.performSegue(withIdentifier: "detailViewSegue", sender: self)
+                self?.performSegue(withIdentifier: "ShowItem", sender: self)
             })
         }
+        
+        self.currentProduct = self.productData[(indexPath as NSIndexPath).row]
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -135,9 +137,14 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
                 photo = productData[selectedIndex.row]
             }
             
-            let destinationVC = segue.destination as! ProductDetailViewController
+            let showImage = segue.destination as! ProductDetailViewController
             print(photo.image)
-            destinationVC.productImageURL = photo.image
+            
+            showImage.productImageURL = photo.image
+            
+            let controller = segue.destination as? ProductDetailViewController
+            
+            controller?.theProduct = self.currentProduct
         }
     }
     

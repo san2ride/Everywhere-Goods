@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let productsViewController = rootViewController.topViewController as! ProductViewController
         productsViewController.products = ProductAPI()
         
-        self.client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
+//        self.client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
         
         return true
     }
